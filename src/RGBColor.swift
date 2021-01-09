@@ -22,7 +22,8 @@ internal struct RGBColor: Hashable, Equatable {
 		self.blue = blue
 		self.alpha = alpha
         let maxInt = Int64(Int32.max)
-		self.hashValue = Int(((alpha << 24) | (red << 16) | (green << 8) | blue) % maxInt)
+        let hash64 = ((alpha << 24) | (red << 16) | (green << 8) | blue)
+        self.hashValue = Int(hash64 % maxInt)
 	}
 
 	init(color: UIColor) {
